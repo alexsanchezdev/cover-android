@@ -11,6 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Email address"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif"/>
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif"/>
+
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
@@ -20,6 +41,6 @@
             android:fontFamily="sans-serif"
             android:text="SIGN IN"
             android:textColor="#ffffff"
-            android:onClick="presentLoginActivity"/>
+            android:onClick="dismissLoginActivity"/>
     </LinearLayout>
 </FrameLayout>
