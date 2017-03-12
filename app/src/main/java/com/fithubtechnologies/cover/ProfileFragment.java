@@ -4,8 +4,13 @@ package com.fithubtechnologies.cover;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -23,9 +28,12 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private FirebaseAuth mAuth;
+
 
     public ProfileFragment() {
         // Required empty public constructor
+        setHasOptionsMenu(true);
     }
 
     /**
@@ -53,6 +61,8 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -62,4 +72,21 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
+    // Add options menu only in profile fragment
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.profile_menu_bar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_signOut){
+            mAuth.signOut();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
